@@ -1,0 +1,1 @@
+rgb_matrix_mode(RGB_MATRIX_EFFECT_STATIC_COLORS);
