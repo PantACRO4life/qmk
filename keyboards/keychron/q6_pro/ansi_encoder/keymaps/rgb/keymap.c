@@ -259,10 +259,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_31] = LAYOUT_109_ansi(
         _______,  KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24, RGB_TOG, BT_HST1, BT_HST2, BT_HST3,      BT_HST4,      BT_HST5,      BT_HST6, KC_CALC,
         DF(LAYER_0), DF(LAYER_1), DF(LAYER_2), DF(LAYER_3), DF(LAYER_4), DF(LAYER_5), DF(LAYER_6), DF(LAYER_7), DF(LAYER_8), DF(LAYER_9), DF(LAYER_10), _______, _______, _______, _______, _______, _______,      _______,      _______,      _______, RGB_VAD,
-        _______, DF(LAYER_11), DF(LAYER_12), DF(LAYER_13), DF(LAYER_14), DF(LAYER_15), DF(LAYER_16), DF(LAYER_17), DF(LAYER_18), DF(LAYER_19), DF(LAYER_20), _______, _______, _______, _______, _______, _______,  DF(LAYER_7),  DF(LAYER_8),  DF(LAYER_9), RGB_VAI,
-        _______, DF(LAYER_21), DF(LAYER_22), DF(LAYER_23), DF(LAYER_24), DF(LAYER_25), DF(LAYER_26), DF(LAYER_27), DF(LAYER_28), DF(LAYER_29), DF(LAYER_30), _______,          _______,                             DF(LAYER_4),  DF(LAYER_5),  DF(LAYER_6),
-        _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          KC_MPLY,           DF(LAYER_1),  DF(LAYER_2),  DF(LAYER_3), _______,
-        _______, _______, _______,                            _______,                            _______, _______, _______, _______, KC_MPRV, _______, KC_MNXT,  DF(LAYER_0),                 KC_COMM             ),
+            _______, DF(LAYER_11), DF(LAYER_12), DF(LAYER_13), DF(LAYER_14), DF(LAYER_15), DF(LAYER_16), DF(LAYER_17), DF(LAYER_18), DF(LAYER_19), DF(LAYER_20), _______, _______, _______, _______, _______, _______,  _______,  _______,  _______, RGB_VAI,
+            _______, DF(LAYER_21), DF(LAYER_22), DF(LAYER_23), DF(LAYER_24), DF(LAYER_25), DF(LAYER_26), DF(LAYER_27), DF(LAYER_28), DF(LAYER_29), DF(LAYER_30), _______,          _______,                             _______,  _______,  _______,
+            _______,          _______, _______, _______, _______, _______, NK_ON, _______, _______, _______, _______,          _______,          KC_MPLY,           _______,  _______,  _______, _______,
+            _______, _______, _______,                            _______,                            _______, _______, _______, _______, KC_MPRV, _______, KC_MNXT,  _______,                 KC_COMM             ),
 };
 
 #if defined(ENCODER_MAP_ENABLE)
@@ -302,12 +302,9 @@ const uint16_t PROGMEM encoder_map[][1][2] = {
 };
 #endif // ENCODER_MAP_ENABLE
 
+//*  ###############   RGB CODE   #####################  *//
+//*  ##################################################  *//
 
-
-#define MATRIX_COLS 21 // Update this value according to your keyboard matrix size
-#define SPLASH_RADIUS 3
-
-// Custom function to set specific colors for different rows
 void set_custom_colors(void) {
     for (int i = 0; i < 41; i++) {
         rgb_matrix_set_color(i, 255, 0, 15); // Purple
@@ -320,53 +317,21 @@ void set_custom_colors(void) {
     }
 }
 
-// Update lock key colors
 void update_lock_keys(void) {
     if (host_keyboard_led_state().caps_lock) {
-        rgb_matrix_set_color(62, 255, 255, 255); // White for Caps Lock
+        rgb_matrix_set_color(62, 255, 255, 255);
     }
     if (host_keyboard_led_state().num_lock) {
-        rgb_matrix_set_color(37, 255, 255, 255); // White for Num Lock
+        rgb_matrix_set_color(37, 255, 255, 255);
     }
 }
-
-// Apply splash effect with a radius
-void splash_effect(uint8_t row, uint8_t col) {
-    for (int r = -SPLASH_RADIUS; r <= SPLASH_RADIUS; r++) {
-        for (int c = -SPLASH_RADIUS; c <= SPLASH_RADIUS; c++) {
-            int current_row = row + r;
-            int current_col = col + c;
-            if (current_row >= 0 && current_row < MATRIX_ROWS && current_col >= 0 && current_col < MATRIX_COLS) {
-                int key_index = current_col + current_row * MATRIX_COLS;
-                rgb_matrix_set_color(key_index, 255, 255, 255); // White splash
-            }
-        }
-    }
-}
-
-// Initialize keyboard with custom colors
 void keyboard_post_init_user(void) {
-    rgb_matrix_enable_noeeprom(); // Enable RGB Matrix
-    rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR); // Set to solid color mode
-    set_custom_colors(); // Apply custom colors initially
-    update_lock_keys(); // Apply lock key colors initially
+    rgb_matrix_enable_noeeprom();
+    rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+    set_custom_colors();
 }
 
-// Apply continuous custom colors and lock key updates
 void matrix_scan_user(void) {
-    // Only update lock keys to avoid continuous resetting of custom colors
+    set_custom_colors();
     update_lock_keys();
-}
-
-// Trigger splash effect on key press
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        uint8_t row = record->event.key.row;
-        uint8_t col = record->event.key.col;
-        splash_effect(row, col);
-        wait_ms(200); // Increase delay to make the splash more noticeable
-        set_custom_colors(); // Reset colors after splash
-        update_lock_keys(); // Ensure lock key colors are reset as well
-    }
-    return true;
 }
