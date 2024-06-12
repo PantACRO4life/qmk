@@ -37,7 +37,7 @@ bool process_record_keychron_wireless(uint16_t keycode, keyrecord_t *record) {
     static uint8_t host_idx;
 
     switch (keycode) {
-        case BT_HST1 ... BT_HST3:
+        case BT_HST1 ... BT_HST6:
             if (get_transport() == TRANSPORT_BLUETOOTH) {
                 if (record->event.pressed) {
                     host_idx = keycode - BT_HST1 + 1;

@@ -1,5 +1,5 @@
 {
-  "name": "Keychron Q6 Pro ANSI Knob",
+  "name": "Keychron Q6 Pro ANSI Knob Godlike",
   "vendorId": "0x3434",
   "productId": "0x0660",
   "keycodes": ["qmk_lighting"],
@@ -77,6 +77,9 @@
     {"name": "Bluetooth Host 1", "title": "Bluetooth Host 1", "shortName": "BTH1"},
     {"name": "Bluetooth Host 2", "title": "Bluetooth Host 2", "shortName": "BTH2"},
     {"name": "Bluetooth Host 3", "title": "Bluetooth Host 3", "shortName": "BTH3"},
+    {"name": "Bluetooth Host 4", "title": "Bluetooth Host 4", "shortName": "BTH4"},
+    {"name": "Bluetooth Host 5", "title": "Bluetooth Host 5", "shortName": "BTH5"},
+    {"name": "Bluetooth Host 6", "title": "Bluetooth Host 6", "shortName": "BTH6"},
     {"name": "Battery Level", "title": "Show battery level", "shortName": "Batt"}
   ],
   "matrix": {"rows": 6, "cols": 21},

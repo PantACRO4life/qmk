@@ -21,7 +21,7 @@
 
 //
 #ifndef HOST_DEVICES_COUNT
-#    define HOST_DEVICES_COUNT                      3
+#    define HOST_DEVICES_COUNT                      6
 #endif
 
 //  Uint: Second

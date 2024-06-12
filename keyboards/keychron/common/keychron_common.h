@@ -35,6 +35,9 @@ enum {
     BT_HST1,
     BT_HST2,
     BT_HST3,
+    BT_HST4,
+    BT_HST5,
+    BT_HST6,
     P2P4G,
     BAT_LVL,
 #endif
@@ -50,6 +53,9 @@ enum {
     #define BT_HST1     KC_TRANS
     #define BT_HST2     KC_TRANS
     #define BT_HST3     KC_TRANS
+    #define BT_HST4     KC_TRANS
+    #define BT_HST5     KC_TRANS
+    #define BT_HST6     KC_TRANS
     #define P2P4G       KC_TRANS
     #define BAT_LVL     KC_TRANS
 #endif

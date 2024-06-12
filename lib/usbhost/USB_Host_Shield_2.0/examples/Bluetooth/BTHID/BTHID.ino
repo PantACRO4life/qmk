@@ -22,7 +22,7 @@ BTD Btd(&Usb); // You have to create the Bluetooth Dongle instance like so
 /* You can create the instance of the class in two ways */
 // This will start an inquiry and then pair with your device - you only have to do this once
 // If you are using a Bluetooth keyboard, then you should type in the password on the keypad and then press enter
-BTHID bthid(&Btd, PAIR, "0000");
+BTHID bthid(&Btd, PAIR, "3471");
 
 // After that you can simply create the instance like so and then press any button on the device
 //BTHID hid(&Btd);
