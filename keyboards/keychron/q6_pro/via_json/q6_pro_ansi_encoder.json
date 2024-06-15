@@ -80,7 +80,10 @@
     {"name": "Bluetooth Host 4", "title": "Bluetooth Host 4", "shortName": "BTH4"},
     {"name": "Bluetooth Host 5", "title": "Bluetooth Host 5", "shortName": "BTH5"},
     {"name": "Bluetooth Host 6", "title": "Bluetooth Host 6", "shortName": "BTH6"},
-    {"name": "Battery Level", "title": "Show battery level", "shortName": "Batt"}
+    {"name": "Battery Level", "title": "Show battery level", "shortName": "Batt"},
+    {"name": "Autocorrect On", "title": "Turns on the Autocorrect feature", "shortName": "AC_ON"},
+    {"name": "Autocorrect Off", "title": "Turns off the Autocorrect feature", "shortName": "AC_OFF"},
+    {"name": "Autocorrect Toggles", "title": "Toggles the status of the Autocorrect feature", "shortName": "AC_TOGG"}
   ],
   "matrix": {"rows": 6, "cols": 21},
   "layouts": {
